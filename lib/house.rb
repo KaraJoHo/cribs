@@ -21,5 +21,11 @@ class House
     end
   end
 
+  def area 
+    @rooms.sum do |room| 
+      room.area
+    end
+  end
+
   
 end
