@@ -6,6 +6,8 @@ RSpec.describe House do
   
   let(:room_1) {Room.new(:bedroom, 10, '13')}
   let(:room_2) {Room.new(:bedroom, 11, '15')}
+  let(:room_3) {Room.new(:living_room, 25, '15')}
+  let(:room_4) {Room.new(:basement, 30, '41')}
 
   describe '#initialize' do 
     it 'exists and has attributes' do 
@@ -22,6 +24,24 @@ RSpec.describe House do
       house.add_room(room_2)
 
       expect(house.rooms).to eq([room_1, room_2])
+    end
+  end
+
+  describe '#above_market_average?' do 
+    it 'returns true if price is over 500000' do 
+      expect(house.above_market_average?).to eq(false)
+    end
+  end
+
+  describe '#rooms_from_category' do 
+    it 'returns a list of rooms by the given category' do 
+      house.add_room(room_1)
+      house.add_room(room_2)
+      house.add_room(room_3)
+      house.add_room(room_4)
+
+      expect(house.rooms_from_category(:bedroom)).to eq([room_1, room_2])
+      expect(house.rooms_from_category(:basement)).to eq([room_4])
     end
   end
 end
