@@ -83,4 +83,21 @@ RSpec.describe House do
       expect(house.rooms_sorted_by_area).to eq([room_4, room_3, room_2, room_1])
     end
   end
+
+  describe '#rooms_by_category' do 
+    it 'sorts the rooms by category in a hash' do 
+      house.add_room(room_1)
+      house.add_room(room_2)
+      house.add_room(room_3)
+      house.add_room(room_4)  
+      expected = { 
+                    :bedroom => [room_1, room_2],
+                    :living_room => [room_3],
+                    :basement => [room_4]
+
+      }
+
+      expect(house.rooms_by_category).to eq(expected)
+    end
+  end
 end
