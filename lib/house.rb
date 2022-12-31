@@ -27,5 +27,12 @@ class House
     end
   end
 
+  def details 
+    house_info = {}
+    house_info["price"] = @price 
+    house_info["address"] = @address
+    house_info
+  end
+
   
 end
