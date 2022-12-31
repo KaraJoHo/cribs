@@ -72,4 +72,15 @@ RSpec.describe House do
       expect(house.price_per_square_foot).to eq(210.53)
     end
   end
+
+  describe '#rooms_sorted_by_area' do 
+    it 'sorts the rooms by area from larg4st to smallest' do 
+      house.add_room(room_1)
+      house.add_room(room_2)
+      house.add_room(room_3)
+      house.add_room(room_4) 
+
+      expect(rooms_sorted_by_area).to eq([room_4, room_3, room_2, room_1])
+    end
+  end
 end
